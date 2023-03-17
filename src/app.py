@@ -2,6 +2,7 @@ from PIL import Image
 from pystray import Icon, Menu, MenuItem
 
 from commands import reboot, shutdown, stop
+from locker import Locker
 
 menu = Menu(
     MenuItem("Reboot", reboot),
@@ -11,13 +12,19 @@ menu = Menu(
 
 
 class App:
-    def start(self):
-        icon = Icon(
+    def __init__(self) -> None:
+        self.locker = Locker("lock")
+        self.icon = Icon(
             "menu",
             icon=Image.open("icon.ico"),
             menu=menu,
         )
-        icon.run()
+
+    def start(self):
+        if self.locker.locked:
+            return
+        self.locker.lock()
+        self.icon.run()
 
     def stop(self):
         pass

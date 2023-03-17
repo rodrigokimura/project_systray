@@ -7,6 +7,7 @@ name = "pypi"
 pystray = "*"
 pycairo = "*"
 pygobject = "*"
+psutil = "*"
 
 [dev-packages]
 black = "*"
