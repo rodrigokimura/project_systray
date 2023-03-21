@@ -7,6 +7,7 @@ from locker import Locker
 menu = Menu(
     MenuItem("Reboot", reboot),
     MenuItem("Shutdown", shutdown),
+    Menu.SEPARATOR,
     MenuItem("Exit", stop),
 )
 
